@@ -59,13 +59,14 @@ def generate_products(total: int, filename: str):
     file_path = f'data/{filename}'
 
     # Check file exists and write header first
+    # newline='' to fix new blank line on windows
     if not os.path.isfile(file_path):
-        with open(file_path, 'w', encoding='UTF8') as csv_file:
+        with open(file_path, 'w', encoding='UTF8', newline='') as csv_file:
             writer = csv.writer(csv_file)
             writer.writerow(header)
 
     # Append more rows to file
-    with open(file_path, 'a', encoding='UTF8') as csv_file:
+    with open(file_path, 'a', encoding='UTF8', newline='') as csv_file:
         writer = csv.writer(csv_file)
         for _ in range(1, total):
             _id = int(time.time())
